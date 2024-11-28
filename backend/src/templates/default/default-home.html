@@ -1,0 +1,75 @@
+{{#extend "base"}}
+  {{#content "main"}}
+    <!-- Hero Section -->
+    {{#if hero}}
+    <section class="hero bg-primary text-white py-5 mb-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4">{{hero.title}}</h1>
+            <p class="lead">{{hero.description}}</p>
+            {{#if hero.cta}}
+            <a href="{{hero.cta.url}}" class="btn btn-light btn-lg">{{hero.cta.text}}</a>
+            {{/if}}
+          </div>
+          {{#if hero.image}}
+          <div class="col-lg-6">
+            <img src="{{hero.image}}" alt="{{hero.imageAlt}}" class="img-fluid rounded shadow">
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </section>
+    {{/if}}
+
+    <!-- Latest Posts -->
+    <section class="latest-posts mb-5">
+      <div class="container">
+        <h2 class="mb-4">Latest Posts</h2>
+        <div class="row">
+          {{#each posts}}
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+              {{#if featuredImage}}
+              <img src="{{featuredImage}}" class="card-img-top" alt="{{title}}">
+              {{/if}}
+              <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">{{excerpt}}</p>
+                <a href="{{url}}" class="btn btn-primary">Read More</a>
+              </div>
+              <div class="card-footer text-muted">
+                <small>{{formatDate date}}</small>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Sections -->
+    {{#if sections}}
+    {{#each sections}}
+    <section class="py-5 {{#if background}}bg-light{{/if}}">
+      <div class="container">
+        <div class="row align-items-center">
+          {{#if image}}
+          <div class="col-lg-6 {{#if imageRight}}order-lg-2{{/if}}">
+            <img src="{{image}}" alt="{{imageAlt}}" class="img-fluid rounded shadow">
+          </div>
+          {{/if}}
+          <div class="col-lg-6 {{#if imageRight}}order-lg-1{{/if}}">
+            <h2>{{title}}</h2>
+            <p class="lead">{{description}}</p>
+            {{#if cta}}
+            <a href="{{cta.url}}" class="btn btn-primary">{{cta.text}}</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </section>
+    {{/each}}
+    {{/if}}
+  {{/content}}
+{{/extend}}

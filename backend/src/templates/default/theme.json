@@ -1,0 +1,23 @@
+{
+  "name": "PRSS Compatible Theme",
+  "version": "1.0.0",
+  "description": "A default theme compatible with PRSS site structure",
+  "author": "Static Site Editor",
+  "templates": {
+    "base": "default-base.html",
+    "post": "default-post.html",
+    "home": "default-home.html"
+  },
+  "assets": {
+    "css": ["styles/main.css"],
+    "js": ["js/main.js"]
+  },
+  "config": {
+    "supports": {
+      "customCss": true,
+      "customJs": true,
+      "hero": true,
+      "featuredImage": true
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{{#extend "base"}}
+  {{#content "main"}}
+    <article class="blog-post">
+      <!-- Post Header -->
+      <header class="post-header mb-5">
+        <div class="container">
+          {{#if featuredImage}}
+          <div class="featured-image mb-4">
+            <img src="{{featuredImage}}" alt="{{title}}" class="img-fluid rounded shadow">
+          </div>
+          {{/if}}
+          
+          <h1 class="display-4 mb-3">{{title}}</h1>
+          
+          <div class="post-meta text-muted mb-4">
+            <span class="date">{{formatDate date}}</span>
+            {{#if author}}
+            <span class="author mx-2">by {{author}}</span>
+            {{/if}}
+            {{#if categories}}
+            <span class="categories">
+              in 
+              {{#each categories}}
+              <a href="/category/{{slug}}" class="text-primary">{{name}}</a>{{#unless @last}}, {{/unless}}
+              {{/each}}
+            </span>
+            {{/if}}
+          </div>
+          
+          {{#if excerpt}}
+          <div class="lead mb-4">
+            {{excerpt}}
+          </div>
+          {{/if}}
+        </div>
+      </header>
+
+      <!-- Post Content -->
+      <div class="post-content container mb-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            {{{content}}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Post Footer -->
+      <footer class="post-footer container mb-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            {{#if tags}}
+            <div class="tags mb-4">
+              {{#each tags}}
+              <a href="/tag/{{slug}}" class="badge badge-light mr-2">{{name}}</a>
+              {{/each}}
+            </div>
+            {{/if}}
+
+            <!-- Social Share -->
+            <div class="share-buttons mb-4">
+              <h5>Share this post</h5>
+              <a href="https://twitter.com/intent/tweet?url={{url}}&text={{title}}" 
+                class="btn btn-outline-primary mr-2" target="_blank">
+                <i class="fa fa-twitter"></i> Twitter
+              </a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{url}}" 
+                class="btn btn-outline-primary mr-2" target="_blank">
+                <i class="fa fa-facebook"></i> Facebook
+              </a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{title}}" 
+                class="btn btn-outline-primary" target="_blank">
+                <i class="fa fa-linkedin"></i> LinkedIn
+              </a>
+            </div>
+
+            <!-- Author Bio -->
+            {{#if author}}
+            <div class="author-bio bg-light p-4 rounded">
+              <div class="row align-items-center">
+                {{#if author.avatar}}
+                <div class="col-auto">
+                  <img src="{{author.avatar}}" alt="{{author.name}}" class="rounded-circle" width="80">
+                </div>
+                {{/if}}
+                <div class="col">
+                  <h5 class="mb-1">About {{author.name}}</h5>
+                  <p class="mb-0">{{author.bio}}</p>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+      </footer>
+
+      <!-- Related Posts -->
+      {{#if relatedPosts}}
+      <div class="related-posts container mb-5">
+        <h3 class="mb-4">Related Posts</h3>
+        <div class="row">
+          {{#each relatedPosts}}
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              {{#if featuredImage}}
+              <img src="{{featuredImage}}" class="card-img-top" alt="{{title}}">
+              {{/if}}
+              <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">{{excerpt}}</p>
+                <a href="{{url}}" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{/if}}
+    </article>
+  {{/content}}
+{{/extend}}

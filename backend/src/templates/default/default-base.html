@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{description}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:site_name" content="{{siteName}}">
+    {{#if featuredImage}}
+    <meta name="twitter:image:src" content="{{featuredImage}}">
+    <meta property="og:image" content="{{featuredImage}}">
+    {{/if}}
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+    {{#if customCss}}
+    <link href="{{customCss}}" rel="stylesheet">
+    {{/if}}
+    
+    <title>{{pageTitle}} - {{siteName}}</title>
+</head>
+<body>
+    <div id="root">
+        {{> header}}
+        
+        <main class="container">
+            {{> content}}
+        </main>
+        
+        {{> footer}}
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <!-- Site Configuration -->
+    <script src="/config.js"></script>
+    <script src="/items.js"></script>
+    
+    <!-- Custom JavaScript -->
+    {{#if customJs}}
+    <script src="{{customJs}}"></script>
+    {{/if}}
+</body>
+</html>
